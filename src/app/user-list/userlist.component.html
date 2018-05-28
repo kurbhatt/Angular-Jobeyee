@@ -1,19 +1,27 @@
-<h1>{{welcome}}</h1>
+
+<button class="btn btn-warning" (click)="addBook()">Add</button>
+
 <table class="table">
-  <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Phone</th>
-    <th>Address</th>
-    <th>Created_on</th>
-  </tr>
-  <tr *ngFor="let user of _data">
-    <td>{{i + 1}}</td>
-    <td>{{user.name}}</td>
-    <td>{{user.email}}</td>
-    <td>{{user.phone}}</td>
-    <td>{{user.address}}</td>
-    <td>{{user.Created_on}}</td>
-  </tr>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Address</th>
+      <th>Created_on</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.id }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.phone }}</td>
+      <td>{{ user.address }}</td>
+      <td>{{user.created_on}}</td>
+    </tr>
+  </tbody>
 </table>
+<div *ngIf="bookName" [ngClass]="'success'"> {{bookName}} Added. </div>
+<div *ngIf="errorMessage" [ngClass]="'error'"> {{errorMessage}} </div>
