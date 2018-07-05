@@ -2,44 +2,32 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatSnackBar, MatSnackBarModule, MatTableModule, MatFormFieldModule, MatSelectModule, MatMenuModule, MatInputModule, MatSortModule } from '@angular/material';
-import { RegisterComponent } from './register/register.component';
-import { HttpClientModule } from '@angular/common/http';
-import { RegisterService } from './register/register.service';
-import { UserListComponent } from './user-list/userlist.component';
+import { RegisterComponent } from './user/register.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { CdkTableModule } from '@angular/cdk/table';
-import { UserListService } from './user-list/userlist.service';
+import { UserListComponent } from './user/userlist.component';
+import { HttpModule } from '@angular/http';
+import {UserService } from './user/user.service';
+import { UserFilterPipe } from './user/user-filter.pipe';
+
 @NgModule({
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    MatSnackBarModule,
-    HttpClientModule,
-    MatTableModule,
-    MatMenuModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    CdkTableModule,
-    MatInputModule,
-    MatSortModule,
-    // InMemoryWebApiModule.forRoot(BookData) 
+    HttpModule,
   ],
 
   declarations: [
     AppComponent,
     RegisterComponent,
     UserListComponent,
-    NavbarComponent
+    NavbarComponent,
+    UserFilterPipe,
   ],
 
-  providers: [ RegisterService, UserListService ],
+  providers: [ UserService, UserFilterPipe ],
   bootstrap: [AppComponent],
   schemas: []
 })
